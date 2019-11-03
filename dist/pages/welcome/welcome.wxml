@@ -1,2 +1,5 @@
 <!--pages/welcome/welcome.wxml-->
-<cover-image src="./../../img/bg.png"/>
+<div class='welcome'>
+  <cover-image src="./../../img/bg.png" />
+  <text class='text'>{{ text }}</text>
+</div>

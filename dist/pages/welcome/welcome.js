@@ -3,8 +3,14 @@ var util = require("./../../utils/util.js")
 var app = getApp()
 
 Page({
+  data: {
+    text: ''
+  },
   onReady: function() {
     var that = this
+    that.setData({
+      text: 'opening bluetooth adapter...'
+    })
     wx.openBluetoothAdapter({
       success: function(res) {
         /* 获取本机的蓝牙状态 */
@@ -20,7 +26,9 @@ Page({
   },
   getBluetoothAdapterState() {
     var that = this
-    that.toastTitle = '检查蓝牙状态'
+    that.setData({
+      text: 'checking bluetooth adapter...'
+    })
     wx.getBluetoothAdapterState({
       success: function(res) {
         that.startBluetoothDevicesDiscovery()
@@ -32,6 +40,9 @@ Page({
   },
   startBluetoothDevicesDiscovery() {
     var that = this
+    that.setData({
+      text: 'searching device...'
+    })
     setTimeout(() => {
       wx.startBluetoothDevicesDiscovery({
         success: function(res) {
@@ -44,6 +55,9 @@ Page({
   },
   getBluetoothDevices() {
     var that = this
+    that.setData({
+      text: 'connecting device...'
+    })
     setTimeout(() => {
       wx.getBluetoothDevices({
         services: [],
@@ -87,6 +101,9 @@ Page({
   },
   getBLEDeviceServices() {
     var that = this
+    that.setData({
+      text: 'getting BLE device...'
+    })
     setTimeout(() => {
       wx.getBLEDeviceServices({
         deviceId: app.globalData.deviceId,
@@ -101,6 +118,9 @@ Page({
   },
   getBLEDeviceCharacteristics() {
     var that = this
+    that.setData({
+      text: 'getting characteristics of BLE device...'
+    })
     setTimeout(() => {
       wx.getBLEDeviceCharacteristics({
         deviceId: app.globalData.deviceId,
@@ -124,6 +144,9 @@ Page({
   },
   notifyBLECharacteristicValueChange() { // 启用低功耗蓝牙设备特征值变化时的 notify 功能
     var that = this
+    that.setData({
+      text: 'starting notice of BLE device...'
+    })
     console.log('6.启用低功耗蓝牙设备特征值变化时的 notify 功能')
     console.log(app.globalData)
     wx.notifyBLECharacteristicValueChange({

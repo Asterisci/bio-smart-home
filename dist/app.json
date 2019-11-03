@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/welcome/welcome",
     "pages/index/index",
     "pages/setting/setting"
   ],
@@ -13,10 +14,12 @@
     "list": [
       {
         "pagePath": "pages/index/index",
+        "iconPath": "/img/icon-1.png",
         "text": "auto"
       },
       {
         "pagePath": "pages/setting/setting",
+        "iconPath": "/img/icon-3.png",
         "text": "setting"
       }
     ]

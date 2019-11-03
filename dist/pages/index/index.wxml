@@ -3,9 +3,9 @@
   <view class="main-container">
     <text class="main-text">status</text>
     <text class="main-text">{{status}}</text>
-    <button type="primary" bindtap="default">switch</button>
-    <text class="info-text">xx aroma time: {{xx}}</text>
-    <text class="info-text">xxx aroma time: {{xxx}}</text>
+    <button type="primary" bindtap="switchStatus">switch</button>
+    <text class="info-text">linalool time: {{ linalool }}</text>
+    <text class="info-text">cinene time: {{ cinene }}</text>
     <view class="power-container">
       <text class="main-text">power</text>
       <view class="button-container">

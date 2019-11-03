@@ -27,4 +27,4 @@ HC-08
 
 ### 二维码
 
-![](/home/chaoers/workspace/git/github/mine/bio-smart-home/QR/gh_8af38ff9b189_258.jpg)
+![](./QR/gh_8af38ff9b189_258.jpg)

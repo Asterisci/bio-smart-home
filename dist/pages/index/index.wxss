@@ -1,0 +1,37 @@
+/* pages/index/index.wxss */
+
+page {
+  background-color: #ededed;
+}
+
+.main-container {
+  padding: 50rpx;
+  background-color: white;
+  width: 500rpx;
+  margin: 100rpx auto;
+  text-align: center;
+}
+
+.main-text {
+  display: block;
+  margin: 40rpx 0;
+  font-size: 50rpx;
+}
+
+.info-text {
+  display: block;
+  margin: 40rpx 0;
+  font-size: 30rpx;
+}
+
+.power-container {
+  margin: 50rpx 0;
+}
+
+.button-container {
+  margin: 0 auto;
+  width: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

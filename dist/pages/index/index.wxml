@@ -1,0 +1,17 @@
+<!--pages/index/index.wxml-->
+<view>
+  <view class="main-container">
+    <text class="main-text">status</text>
+    <text class="main-text">{{status}}</text>
+    <button type="primary" bindtap="default">switch</button>
+    <text class="info-text">xx aroma time: {{xx}}</text>
+    <text class="info-text">xxx aroma time: {{xxx}}</text>
+    <view class="power-container">
+      <text class="main-text">power</text>
+      <view class="button-container">
+        <icon type="{{ powerType }}"></icon>
+        <text>{{ powerWord }}</text>
+      </view>
+    </view>
+  </view>
+</view>

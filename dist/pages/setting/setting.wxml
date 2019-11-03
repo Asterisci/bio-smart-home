@@ -1,0 +1,69 @@
+<view class="kind-list">
+  <block wx:for="{{list}}" wx:key="id">
+    <view class="kind-list__item">
+      <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+        <view class="weui-flex__item">{{item.name}}</view>
+      </view>
+      <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+        <block wx:if="{{list[0].open}}">
+          <block>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">xx aroma time: </view>
+              <view class="weui-cell__bd">
+                <slider bindchange="slider3change" show-value/>
+              </view>
+            </view>
+          </block>
+          <block>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">xxx aroma time: </view>
+              <view class="weui-cell__bd">
+                <slider bindchange="slider3change" show-value/>
+              </view>
+            </view>
+          </block>
+          <block>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">fan power limit: </view>
+              <view class="weui-cell__bd">
+                <slider bindchange="slider3change" show-value/>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:if="{{list[1].open}}">
+          <block>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">power: </view>
+              <view class="weui-cell__bd">
+                <switch checked="{{power}}" bindchange="switch1Change" />
+              </view>
+            </view>
+          </block>
+          <block>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">aroma select: </view>
+              <view class="weui-cell__bd">
+                <picker bindchange="bindPickerChange" value="{{aroma}}" range="{aromaType}}">
+                  <view class="picker">
+                    {{aromaType[aroma]}}
+                  </view>
+                </picker>
+              </view>
+            </view>
+          </block>
+          <block>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">fan speed: </view>
+              <view class="weui-cell__bd">
+                <slider bindchange="slider3change" show-value/>
+              </view>
+            </view>
+          </block>
+        </block>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

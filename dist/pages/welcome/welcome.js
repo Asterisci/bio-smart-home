@@ -1,8 +1,10 @@
 // pages/welcome/welcome.js
 Page({
   data: {
-    deviceId: "20:19:08:16:30:15",
-    services: ''
+    deviceId: "90:9A:77:19:0E:6B",
+    services: '',
+    balanceData: '',
+    hexstr: ''
   },
 
   onLoad: function(options) {
@@ -23,12 +25,12 @@ Page({
         // 初始化失败
       }
     })
-    setTimeout(() => {
-      wx.switchTab({
-        url: '../index/index'
-      })
-
-    }, 2000)
+    // setTimeout(() => {
+      // wx.switchTab({
+      //   url: '../index/index'
+      // })
+      // this.sendData("123");
+    // }, 2000)
   },
   getBluetoothAdapterState() {
     var that = this;
@@ -62,7 +64,7 @@ Page({
     //     console.log(res)
     //   }
     // })
-    setInterval(() => {
+    setTimeout(() => {
       wx.getBluetoothDevices({
         services: [],
         allowDuplicatesKey: false,
@@ -84,7 +86,7 @@ Page({
           console.log(res, '获取蓝牙设备列表失败=====')
         }
       })
-    }, 2000)
+    }, 5000)
   },
   connectTO() {
     var that = this;
@@ -153,15 +155,18 @@ Page({
     wx.notifyBLECharacteristicValueChange({
       state: true,
       deviceId: that.data.deviceId,
-      serviceId: that.notifyServicweId,
-      characteristicId: that.notifyCharacteristicsId,
+      serviceId: that.data.services[2].uuid,
+      characteristicId: that.data.notifyCharacteristicsId,
       complete(res) {
+        that.sendData("12")
+        setTimeout(() => {
+          that.sendData("12")
+        },500)
         /*用来监听手机蓝牙设备的数据变化*/
-        wx.onBLECharacteristicValueChange(function(res) {
-          /**/
-          that.balanceData += that.buf2string(res.value)
-          that.hexstr += that.receiveData(res.value)
-        })
+          wx.onBLECharacteristicValueChange(function (res) {
+            /**/
+            console.log("接收数据: ",that.buf2string(res.value), that.receiveData(res.value))
+          })
       },
       fail(res) {
         console.log(res, '启用低功耗蓝牙设备监听失败')
@@ -203,4 +208,26 @@ Page({
     }
     return resultStr.join('');
   },
+  sendData(str) {
+    let that = this;
+    let dataBuffer = new ArrayBuffer(str.length)
+    let dataView = new DataView(dataBuffer)
+    for (var i = 0; i < str.length; i++) {
+      dataView.setUint8(i, str.charAt(i).charCodeAt())
+    }
+    let dataHex = that.ab2hex(dataBuffer);
+    this.writeDatas = that.hexCharCodeToStr(dataHex);
+    wx.writeBLECharacteristicValue({
+      deviceId: that.data.deviceId,
+      serviceId: that.data.services[2].uuid,
+      characteristicId: that.data.notifyCharacteristicsId,
+      value: dataBuffer,
+      success: function(res) {
+        console.log('发送的数据：' + that.writeDatas)
+        console.log('message发送成功')
+      },
+      fail: function(res) {},
+      complete: function(res) {}
+    })
+  }
 })

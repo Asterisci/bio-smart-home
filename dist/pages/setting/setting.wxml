@@ -9,32 +9,6 @@
           <block wx:if="{{list[0].open}}">
             <block>
               <view class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">linalool aroma time: </view>
-                <view class="weui-cell__bd">
-                  <slider bindchange="changeLinalool" value="{{linalool}}" show-value/>
-                </view>
-              </view>
-            </block>
-            <block>
-              <view class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">cinene aroma time: </view>
-                <view class="weui-cell__bd">
-                  <slider bindchange="changeCinene" value="{{cinene}}" show-value/>
-                </view>
-              </view>
-            </block>
-            <block>
-              <view class="weui-cell weui-cell_access">
-                <view class="weui-cell__bd">fan power limit: </view>
-                <view class="weui-cell__bd">
-                  <slider bindchange="changeFan" value="{{fan}}" show-value/>
-                </view>
-              </view>
-            </block>
-          </block>
-          <block wx:if="{{list[1].open}}">
-            <block>
-              <view class="weui-cell weui-cell_access">
                 <view class="weui-cell__bd">power: </view>
                 <view class="weui-cell__bd">
                   <switch checked="{{power}}" bindchange="changePower" />

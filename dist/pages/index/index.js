@@ -1,6 +1,7 @@
 // pages/index/index.js
-Page({
+var util = require("./../../utils/util.js")
 
+Page({
   data: {
     status: 'auto',
     statusType: ['auto', 'full speed', 'silence'],
@@ -9,9 +10,6 @@ Page({
     cinene: '456',
     powerType: 'success',
     powerWord: 'on'
-  },
-  onReady: function() {
-
   },
   switchStatus() {
     if (this.data.statusNum != 2) {
@@ -22,7 +20,16 @@ Page({
       })
     }
     this.setData({
-      status : this.data.statusType[statusNum]
+      status : this.data.statusType[this.data.statusNum]
     })
+    if(this.data.statusNum == 0){
+      util.sendData("22")
+    }
+    if (this.data.statusNum == 1) {
+      util.sendData("21")
+    }
+    if (this.data.statusNum == 2) {
+      util.sendData("23")
+    }
   }
 })

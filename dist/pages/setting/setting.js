@@ -1,15 +1,13 @@
 // pages/setting.js
+var util = require("./../../utils/util.js")
+
 Page({
   data: {
-    list: [{
-        id: 'auto',
-        name: 'auto module',
-        open: true
-      },
+    list: [
       {
         id: 'manual',
         name: 'mauual module',
-        open: false
+        open: true
       }
     ],
     power: 1,
@@ -33,25 +31,23 @@ Page({
       list: list
     });
   },
-  changeLinalool(e) {
-    console.log(e.detail)
-  },
-  changeCinene(e) {
-    console.log(e.detail)
-  },
-  changeFan(e) {
-    console.log(e.detail)
-  },
   changePower(e) {
+    if (e.value == 0) {
+      util.sendData("40")
+    }else{
+      util.sendData("41")
+    }
     console.log(e.detail)
   },
   changeAroma(e) {
     this.setData({
       aroma : e.detail.value
     })
+    if (e.value == 0) {
+      util.sendData("11")
+    } else {
+      util.sendData("12")
+    }
     console.log(e.detail)
-  },
-  onReady: function() {
-
   }
 })
